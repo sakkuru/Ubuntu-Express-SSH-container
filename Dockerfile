@@ -1,10 +1,10 @@
 FROM ubuntu:16.04
 
-RUN apt-get -qq update && apt-get upgrade -y
-RUN apt-get install -y curl sudo git
+RUN apt-get update && apt-get upgrade -y
+RUN apt-get install -y sudo curl
 
 # sshd
-RUN apt-get install -y --no-install-recommends openssh-server curl
+RUN apt-get install -y --no-install-recommends openssh-server
 RUN echo "root:Docker!" | chpasswd
 RUN mkdir /var/run/sshd
 COPY sshd_config /etc/ssh/
